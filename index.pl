@@ -18,7 +18,10 @@ my @images;
 opendir(DIR, './images/GERMAIN') or die "Can't open the content directory: $!";
 
 while (defined($file = readdir(DIR))) 	
-	{ push(@images, $file); }
+	{ 
+	if ($file =~ /^(.*\/)*.+\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP)$/ ) #is it an image?
+		{ push(@images, $file); }
+	}
 	
 my $chaika = scalar @images; #The total number of images available.
 
